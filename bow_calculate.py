@@ -25,5 +25,5 @@ class calculate_bow:
         print(f"with rounding, that is {total*2} cm")
 
 
-my_bow = calculate_bow(144)
+my_bow = calculate_bow(145)
 my_bow.print_values()
