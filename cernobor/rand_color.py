@@ -8,7 +8,7 @@ def create_rand_list(main_length, list_length, max_num):
 
     :param main_length: int length of the main list
     :param list_length: int lengths of the random lists
-    :param max_num: int 
+    :param max_num: int
     """
     rand_list = []
     while len(rand_list) < main_length:
@@ -25,10 +25,24 @@ def create_rand_list(main_length, list_length, max_num):
 
 def write_to_file(rand_list):
     mydoc = docx.Document()
-    mydoc.add_paragraph("This is first paragraph of a MS Word file.")
+
+    for single_list in rand_list:
+        para = mydoc.add_paragraph()
+        for point in single_list:
+            para.add_run(str(point))
+
     mydoc.save('my_word.docx')
 
+    '''
+    para = mydoc.add_paragraph()
+    p = para.add_run("nnnnnn")
 
-print(create_rand_list(5, 5, 6))
+    p.font.name = 'Wingdings'
+    z = para.add_run("ggg")
 
-write_to_file(5)
+    '''
+
+
+rand_list = create_rand_list(5, 5, 6)
+
+write_to_file(rand_list)
