@@ -1,4 +1,5 @@
 from random import randint
+from docx.shared import RGBColor
 import docx
 
 
@@ -24,12 +25,24 @@ def create_rand_list(main_length, list_length, max_num):
 
 
 def write_to_file(rand_list):
+
+    color_dict = {1: 'FF0000', 2: 'FFCA00',
+                  3: '88D0FF', 4: '007800', 5: 'A8A9AD'}
     mydoc = docx.Document()
 
     for single_list in rand_list:
         para = mydoc.add_paragraph()
         for point in single_list:
-            para.add_run(str(point))
+            if point == 6:
+                # n is a full square in Wingdings
+                current_run = para.add_run('p')
+                current_run.font.name = 'Wingdings'
+            else:
+                # n is a full square in Wingdings
+                current_run = para.add_run('n')
+                current_run.font.name = 'Wingdings'
+                current_run.font.color.rgb = RGBColor.from_string(
+                    color_dict[point])
 
     mydoc.save('my_word.docx')
 
@@ -43,6 +56,6 @@ def write_to_file(rand_list):
     '''
 
 
-rand_list = create_rand_list(5, 5, 6)
+rand_list = create_rand_list(30, 5, 6)
 
 write_to_file(rand_list)
