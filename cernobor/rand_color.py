@@ -28,6 +28,10 @@ def create_rand_list(main_length, list_length, max_num):
 
 
 def write_to_file(rand_list):
+    """
+    write color codes into newly created .docx file
+    :param rand_list: list of lists
+    """
 
     color_dict = {1: 'FF0000', 2: 'FFCA00',
                   3: '88D0FF', 4: '007800', 5: 'A8A9AD'}
